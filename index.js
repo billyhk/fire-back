@@ -1,13 +1,12 @@
 const express = require('express')
 const app = express()
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 const cors = require('cors')
 const strainsController = require('./controllers/strains')
 const mongoose = require('mongoose')
 
-
 app.use(cors())
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 
 app.use(express.json())
 
