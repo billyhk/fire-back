@@ -18,4 +18,6 @@ mongoose
   )
   .catch((error) => console.log('Connection failed!', error))
 
+mongoose.Promise = Promise
+
 module.exports = mongoose

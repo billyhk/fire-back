@@ -1,32 +1,32 @@
 [
 	{
-        "title": "Hall of Fame",
-        "strain": "Amnesia Haze",
-        "genetics": "Sativa dominant (70%)",
-        "parents": "Jamaican, Afghani, Laos, Hawaiian",
-        "thc": "22 - 24%",
-        "cbd": "Low",
-        "smellandflavour": "Sweet, Pepper, Citrus, spicy, Earthy",
-        "effect": "Uplifting, Euphoric, Cerebral, Strong, Energetic"
+		"title": "Hall of Fame",
+		"name": "Amnesia Haze",
+		"genetics": "Sativa dominant (70%)",
+		"parents": "Jamaican, Afghani, Laos, Hawaiian",
+		"thcContent": "22 - 24%",
+		"cbdContent": "Low",
+		"smellAndFlavor": "Sweet, Pepper, Citrus, Spicy, Earthy",
+		"effect": "Uplifting, Euphoric, Cerebral, Strong, Energetic"
 	},
 	{
-        "title": "Hall of Fame",
-        "strain": "White Widow",
-        "genetics": "Indica-dominant (60%)",
-        "parents": "Brazilian, South Indian",
-        "thc": "20 - 22%",
-        "cbd": "Low",
-        "smellandflavour": "Sweet, Pungent, Fruity, Spicy, Pine",
-        "effect": "Uplifting, Strong, Energetic, Talkative, Euphoric"
+		"title": "Hall of Fame",
+		"name": "White Widow",
+		"genetics": "Indica-dominant (60%)",
+		"parents": "Brazilian, South Indian",
+		"thcContent": "20 - 22%",
+		"cbdContent": "Low",
+		"smellAndFlavor": "Sweet, Pungent, Fruity, Spicy, Pine",
+		"effect": "Uplifting, Strong, Energetic, Talkative, Euphoric"
 	},
 	{
-        "title": "Hall of Fame",
-        "strain": "Northern Lights",
-        "genetics": "Indica (90-100%)",
-        "parents": "Afghani",
-        "thc": "18%",
-        "cbd": "Unknown",
-        "smellandflavour": "Pine, Pungent, Earthy, Sweet",
-        "effect": "Relaxed, Body-buzz, Sociable, Narcotic"
+		"title": "Hall of Fame",
+		"name": "Northern Lights",
+		"genetics": "Indica (90-100%)",
+		"parents": "Afghani",
+		"thcContent": "18%",
+		"cbdContent": "Unknown",
+		"smellAndFlavor": "Pine, Pungent, Earthy, Sweet",
+		"effect": "Relaxed, Body-buzz, Sociable, Narcotic"
 	}
 ]

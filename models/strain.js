@@ -1,14 +1,14 @@
 const mongoose = require('../db/connection')
 
-const strainSchema = mongoose.Schema(
+const strainSchema = new mongoose.Schema(
   {
     title: String,
-    strain: String,
+    name: String,
     genetics: String,
     parents: String,
-    thc: String,
-    cbd: String,
-    smellandflavour: String,
+    thcContent: String,
+    cbdContent: String,
+    smellAndFlavor: String,
     effect: String
   }
 
