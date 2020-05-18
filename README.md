@@ -1,3 +1,3 @@
 # FIRE-back
 
-Back-end development repositoty
+Back-end development repository
