@@ -1,5 +1,9 @@
 const express = require('express')
 const Name = require('../models/strain')
+const {
+  handleValidateId,
+  handleRecordExists
+} = require('../middleware/custom_errors')
 
 const router = express.Router()
 
@@ -17,7 +21,7 @@ router.get('/', (req, res, next) => {
 // })
 
 // GET STRAINS BY ID
-router.get('/:id', (req, res, next) => {
+router.get('/:id', handleValidateId, (req, res, next) => {
   // console.log(req)
   Name.findById(req.params.id)
     .then(strain => { res.json(strain) })
@@ -32,7 +36,7 @@ router.post('/', (req, res, next) => {
 })
 
 // EDIT STRAIN BY ID
-router.put('/:id', (req, res, next) => {
+router.put('/:id', handleValidateId, (req, res, next) => {
   Name.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true
   })
@@ -41,7 +45,7 @@ router.put('/:id', (req, res, next) => {
 })
 
 // DELETE STRAIN BY ID
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', handleValidateId, (req, res, next) => {
   Name.findOneAndDelete({
     _id: req.params.id
   })
