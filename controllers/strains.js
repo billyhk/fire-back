@@ -40,6 +40,7 @@ router.put('/:id', handleValidateId, (req, res, next) => {
   Name.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true
   })
+    .then(handleRecordExists)
     .then((strain) => res.json(strain))
     .catch(next)
 })
@@ -49,6 +50,7 @@ router.delete('/:id', handleValidateId, (req, res, next) => {
   Name.findOneAndDelete({
     _id: req.params.id
   })
+    .then(handleRecordExists)
     .then((strain) => res.json(strain))
     .catch(next)
 })
