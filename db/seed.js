@@ -1,4 +1,4 @@
-const Strain = require('../models/Strain')
+const Strain = require('../models/strain')
 
 const seedData = require('./seeds.json')
 
