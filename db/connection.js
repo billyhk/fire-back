@@ -6,7 +6,7 @@ const mongoURI =
       : 'mongodb://localhost/fire'
 
 mongoose
-  .connect('mongodb://localhost/fire', {
+  .connect(mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -17,7 +17,5 @@ mongoose
     console.log(`Connected to db: ${instance.connections[0].name}`)
   )
   .catch((error) => console.log('Connection failed!', error))
-
-mongoose.Promise = Promise
 
 module.exports = mongoose
