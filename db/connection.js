@@ -3,10 +3,10 @@ const mongoose = require('mongoose')
 const mongoURI =
     process.env.NODE_ENV === 'production'
       ? process.env.MONGODB_URI
-      : 'mongodb://localhost/cannabis'
+      : 'mongodb://localhost/fire'
 
 mongoose
-  .connect('mongodb://localhost/cannabis', {
+  .connect('mongodb://localhost/fire', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
