@@ -14,11 +14,6 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-// GET /:strain
-// router.get('/:strain', (req, res) => {
-//   Name.find({ strain: req.params.strain })
-//     .then(strain => { res.json(strain) })
-// })
 
 // GET STRAINS BY ID
 router.get('/:id', handleValidateId, (req, res, next) => {
