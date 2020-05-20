@@ -5,11 +5,15 @@ const strainSchema = new mongoose.Schema(
     title: String,
     name: String,
     genetics: String,
+    plantCategory: String,
+    popular: Boolean,
     parents: String,
     thcContent: String,
     cbdContent: String,
     smellAndFlavor: String,
-    effect: String
+    effect: String,
+    info: String,
+    img: String
   }
 
 )
