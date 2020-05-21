@@ -13,7 +13,9 @@ const strainSchema = new mongoose.Schema(
     smellAndFlavor: String,
     effect: String,
     info: String,
-    img: String
+    img: String,
+    mainImage: String,
+    additionalImages: Array
   }
 
 )
