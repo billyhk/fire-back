@@ -23,7 +23,7 @@ router.get('/:id', handleValidateId, (req, res, next) => {
 })
 
 // CREATE|ADD NEW STRAIN
-router.post('/strains', (req, res, next) => {
+router.post('/', (req, res, next) => {
   Name.create(req.body)
     .then((strain) => res.json(strain))
     .catch(next)
