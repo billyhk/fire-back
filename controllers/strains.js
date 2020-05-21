@@ -14,7 +14,6 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-
 // GET STRAINS BY ID
 router.get('/:id', handleValidateId, (req, res, next) => {
   // console.log(req)
@@ -24,7 +23,7 @@ router.get('/:id', handleValidateId, (req, res, next) => {
 })
 
 // CREATE|ADD NEW STRAIN
-router.post('/', (req, res, next) => {
+router.post('/strain', (req, res, next) => {
   Name.create(req.body)
     .then((strain) => res.json(strain))
     .catch(next)
