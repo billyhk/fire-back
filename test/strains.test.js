@@ -4,12 +4,6 @@ const supertest = require('supertest')
 const api = supertest('https://fireinternationalapp.herokuapp.com')
 
 describe('GET /strains', (done) => {
-  it('should return a 200 response', () => {
-    api
-      .get('/strains')
-      .set('Accept', 'application/json')
-      .expect(200, done)
-  })
   it('should return an array', (done) => {
     api
       .get('/strains')
@@ -21,16 +15,21 @@ describe('GET /strains', (done) => {
   })
 })
 
-describe('GET /strains/5ec5041b45f19100047b3684', (done) => {
-  it('should return a 200 response', () => {
+describe('GET /strains/', (done) => {
+  let postToView
+  before((done) => {
     api
-      .get('/strains/5ec5041b45f19100047b3684')
+      .get('/strains')
       .set('Accept', 'application/json')
-      .expect(200, done)
+      .end((error, response) => {
+        const post = response.body
+        postToView = post[post.length - 1]._id
+        done()
+      })
   })
   it('should return an array', (done) => {
     api
-      .get('/strains/5ec5041b45f19100047b3684')
+      .get('/strains/' + postToView._id)
       .set('Accept', 'application/json')
       .end((error, response) => {
         expect(response.body).to.be.an('object')
@@ -44,7 +43,7 @@ describe('POST /strains/', () => {
     title: 'Hall of Fame',
     name: 'Amnesia Haze',
     genetics: 'Sativa dominant (70%)',
-    plantCategory: 'Hybrid: Sativa Dominant',
+    plantCategory: 'Sativa',
     popular: true,
     parents: 'Jamaican, Afghani, Laos, Hawaiian',
     thcContent: '22 - 24%',
@@ -55,9 +54,8 @@ describe('POST /strains/', () => {
     mainImage: 'imgurl',
     additionalImages: ['https://www.leafly.com/strains/amnesia-haze/photos']
   }
-
+  
   before((done) => {
-    console.log(createdId)
     api
       .post('/strains')
       .set('Accept', 'application/json')
@@ -65,12 +63,11 @@ describe('POST /strains/', () => {
       .end(done)
   })
 
-  it('should include the new strain in the collection', (done) => {
+  it('should include the new post in the collection', (done) => {
     api
       .get('/strains')
       .set('Accept', 'application/json')
       .end((error, response) => {
-        console.log(response.body)
         const postToFind = response.body.find((post) => post.id === createdId.id)
         expect(postToFind).to.be.an('object')
         done()
@@ -78,13 +75,13 @@ describe('POST /strains/', () => {
   })
 })
 
-describe('PUT /strains/5ec5041b45f19100047b3684', () => {
+describe('PUT /strains/', () => {
   let strainUpdate
   const editedStrain = {
     title: 'Hall of Fame',
-    name: 'Amnesia Haze',
+    name: 'Tina',
     genetics: 'Sativa dominant (70%)',
-    plantCategory: 'Hybrid: Sativa Dominant',
+    plantCategory: 'Sativa',
     popular: true,
     parents: 'Jamaican, Afghani, Laos, Hawaiian',
     thcContent: '22 - 24%',
@@ -97,59 +94,51 @@ describe('PUT /strains/5ec5041b45f19100047b3684', () => {
   }
   before((done) => {
     api
-      .get('/strains/5ec5041b45f19100047b3684')
+      .get('/strains/')
       .set('Accept', 'application/json')
       .end((error, response) => {
-        console.log(response.body)
-        strainUpdate = response.body
+        post = response.body
+        strainUpdate = post[post.length - 1]
         done()
       })
   })
-  before((done) => {
+  it('can edit a strain by id', (done) => {
     api
       .put(`/strains/${strainUpdate._id}`)
       .set('Accept', 'application/json')
       .send(editedStrain)
-      .end(done)
-  })
-  it('can edit a strain by id', (done) => {
-    api
-      .get('/strains/5ec5041b45f19100047b3684')
-      .set('Accept', 'application/json')
       .end((req, response) => {
-        expect(response.body).to.have.property('name', 'genetics')
+        expect(response.body).to.have.property('name', 'Tina')
         done()
       })
   })
 })
 
-describe('DELETE /strains/5ec6b48d95e92b00044b40cd', () => {
-  let strainToDelete
+describe('DELETE /strains/', () => {
+  let postToDelete
   before((done) => {
     api
-      .get('/strains/5ec6b48d95e92b00044b40cd')
+      .get('/strains')
       .set('Accept', 'application/json')
       .end((error, response) => {
         const post = response.body
-        console.log(response.body)
-        strainToDelete = post[post.length - 1]._id
-        console.log(strainToDelete)
+
+        postToDelete = post[post.length - 1]._id
         done()
       })
   })
   before((done) => {
     api
-      .delete(`/strains/5ec6b48d95e92b00044b40cd/${strainToDelete}`)
+      .delete(`/strains/${postToDelete}`)
       .set('Accept', 'application/json')
       .end(done)
   })
   it('deletes a strain by id', (done) => {
     api
-      .get(`/strains/${strainToDelete}`)
+      .get(`/strains/${postToDelete}`)
       .set('Accept', 'application/json')
       .end((error, response) => {
-        console.log(response.body)
-        expect(response.body.name).to.equal(undefined)
+        expect(response.body).to.equal(null)
         done()
       })
   })
