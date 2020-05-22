@@ -54,7 +54,7 @@ describe('POST /strains/', () => {
     mainImage: 'imgurl',
     additionalImages: ['https://www.leafly.com/strains/amnesia-haze/photos']
   }
-  
+
   before((done) => {
     api
       .post('/strains')
@@ -79,7 +79,7 @@ describe('PUT /strains/', () => {
   let strainUpdate
   const editedStrain = {
     title: 'Hall of Fame',
-    name: 'Tina',
+    name: 'Amnesia Haze',
     genetics: 'Sativa dominant (70%)',
     plantCategory: 'Sativa',
     popular: true,
@@ -108,7 +108,7 @@ describe('PUT /strains/', () => {
       .set('Accept', 'application/json')
       .send(editedStrain)
       .end((req, response) => {
-        expect(response.body).to.have.property('name', 'Tina')
+        expect(response.body).to.have.property('name', 'Amnesia Haze')
         done()
       })
   })
